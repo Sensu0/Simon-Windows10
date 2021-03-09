@@ -1,6 +1,8 @@
-This is simply a document featuring the code strings needed to have a script execute with admin rights automatically.
+# This is simply a document featuring the code strings needed to have a script execute with admin rights automatically.
 
-For CMD and Batch script:
+<h2>For CMD and Batch script:</h2>
+
+---
 
 @echo off
 :: BatchGotAdmin
@@ -30,8 +32,11 @@ if '%errorlevel%' NEQ '0' (
 
 ::ENTER YOUR CODE BELOW:
 
+---
 
-For PowerShell:
+<h2>For PowerShell:</h2>
+
+---
 
 If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")) {
 	Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs

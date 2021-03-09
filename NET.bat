@@ -33,8 +33,18 @@ if '%errorlevel%' NEQ '0' (
 
 ::ENTER YOUR CODE BELOW:
 
-ipconfig /flushdns && Arp -a -d && Nbtstat -R && Nbtstat -RR && netsh int ip reset && Netsh winsock reset
-
-echo Next, we need to restart your computer. Press [Enter] to restart the computer.
+echo Resetting various network caches and datafiles...
+echo on
+Ipconfig /flushdns && Arp -d * && Nbtstat -R && Nbtstat -RR && netsh int ip reset && Netsh winsock reset
+echo off
+echo The computer needs to be restarted. Press [Enter] to restart.
 pause
 shutdown -r -t 0
+pause
+echo Nothing to see here! Unless, your computer can't shutdown for whatever reason.
+pause
+echo You should just reinstall Windows at this point, honestly. I doubt sfc and DISM will save your sorry ass.
+pause
+echo ...
+pause 
+echo Have you seen Deez? Y'know, DEEZ NUTS! HAHA, GOT 'EM!

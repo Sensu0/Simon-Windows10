@@ -34,7 +34,7 @@ if '%errorlevel%' NEQ '0' (
 
 ::ENTER YOUR CODE BELOW:
 
-echo Gonna run sfc once and then 2 different scans with DISM.
+echo Gonna run sfc once and then 2 different scans with DISM...
 echo  
 echo This will take some time to finish, but how long it takes depends on your computer.
 
