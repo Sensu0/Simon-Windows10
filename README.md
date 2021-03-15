@@ -8,7 +8,7 @@ I learned of these on my free time and while working in Servicedesk. Tested and 
 
 <h2>Windows-specific issues</h2>
 
-<i>Fix-Windows.bat<i> is designed scan for issues related to Windows internal issues and attempt to fix them. For example, if Explorer.exe starts crashing randomly or the Start Menu won't show up or appears broken.
+<i>Fix-Windows.bat</i> is designed scan for issues related to Windows internal issues and attempt to fix them. For example, if Explorer.exe starts crashing randomly or the Start Menu won't show up or appears broken.
 
 In case that won't work, you may have issues with the partition itself so running <i>Checkdisk.bat</i> and rebooting your computer might help, which the script will prompt you for.
 
