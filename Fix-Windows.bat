@@ -51,11 +51,13 @@ if '%errorlevel%' NEQ '0' (
 	echo.
 
 : Run sfc first and then DISM & DISM with high priority
-start /high %windir%\System32\sfc.exe /scannow && start /high %windir%\System32\Dism.exe /Online /Cleanup-image /Scanhealth && start /high %windir%\System32\Dism.exe /Online /Cleanup-image /Restorehealth
+cd /D %windir%\System32
+start /high /B /WAIT sfc.exe /scannow && start /high /B /WAIT Dism.exe /Online /Cleanup-image /Scanhealth && start /high /B /WAIT Dism.exe /Online /Cleanup-image /Restorehealth
 
-echo System scans complete! Logs can be found in 'C:\Windows\Logs\CBS' and 'C:\Windows\Logs\DISM' folders. Please send these to your IT technician if you're still having issues. > "%userprofile%\Desktop\SCAD-NOTE.txt"
-    type "%userprofile%\Desktop\SCAD-NOTE.txt"
+echo System scans complete! Logs can be found in 'C:\Windows\Logs\CBS' and 'C:\Windows\Logs\DISM' folders. Please send these to your IT technician if you're still having issues. > "%userprofile%\Desktop\Fix-Windows-NOTE.txt"
 
-echo Printing this as a note to %userprofile%\Desktop\SCAD-NOTE.txt
+type "%userprofile%\Desktop\Fix-Windows-NOTE.txt"
+
+echo Printing this as a note to %userprofile%\Desktop\Fix-Windows-NOTE.txt
 echo.  
 pause | echo Press Any key to close this window.
