@@ -6,7 +6,7 @@ I learned of these on my free time and while working in Servicedesk. Tested and 
 
 ---
 
-<h2>Windows-specific issues</h2>
+<h3>Windows-specific issues</h3>
 
 <i>Fix-Windows.bat</i> is designed scan for issues related to Windows internal issues and attempt to fix them. For example, if Explorer.exe starts crashing randomly or the Start Menu won't show up or appears broken.
 
@@ -14,13 +14,13 @@ In case that won't work, you may have issues with the partition itself so runnin
 
 ---
 
-<h2>For network issues,</h2>
+<h3>For network issues,</h3>
 
 I would start by running <i>renew-ip.bat</i> to ask your network AP to provide a new IP address (provided you're using commonly default DHCP ON setting on your router). It will essentially have the same effect as restarting the computer except you don't actually have to do it when running that script.
 
 If you're still having issues there, try <i>Network reset.bat</i> to perform a lot more advanced troubleshooting, but do note it requires a restart afterwards, which this script will prompt for as well, once finished.
 
-<h2>Profesional & Enterprise specific</h2>
+<h3>Profesional & Enterprise specific</h3>
 
 This is not relevant for the average home user, but rather for corporate computers with Windows 10 Pro or Enterprise equivalent and which are connected to a domain.
 
