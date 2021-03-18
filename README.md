@@ -20,6 +20,8 @@ I would start by running <i>renew-ip.bat</i> to ask your network AP to provide a
 
 If you're still having issues there, try <i>Network reset.bat</i> to perform a lot more advanced troubleshooting, but do note it requires a restart afterwards, which this script will prompt for as well, once finished.
 
+---
+
 <h3>Profesional & Enterprise specific</h3>
 
 This is not relevant for the average home user, but rather for corporate computers with Windows 10 Pro or Enterprise equivalent and which are connected to a domain.
