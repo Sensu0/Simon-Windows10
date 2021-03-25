@@ -3,19 +3,24 @@
 : GNU GENERAL PUBLIC LICENSE
 : Version 3, 29 June 2007
 
+: Skip message at ScriptStart and proceed from gotAdmin if in administrator session.
+::----------------------------------------------------------------------------------
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
+REM --> If error flag set, we do not have admin.  
+if '%errorlevel%' NEQ '0' ( goto ScriptStart ) else ( goto gotAdmin )
 
+:ScriptStart
     echo This script is for checking for Windows specific issues using sfc and DISM and attempt to fix them.
     echo.
     echo This script requires administrator rights to execute.
     echo.
     echo If you're running this in standard mode,
-    echo this script will prompt you to run it as administrator,
-    echo so no need to relaunch it manually as administrator.
+    echo this script will prompt you for your administrator credentials and continue execution.
     echo. 
     pause | echo Close this window to cancel. Press any key to continue.
     
-:: BatchGotAdmin
-::-------------------------------------
+: Prompt for administrator rights if cacls provides error. Otherwise, proceed.
+::----------------------------------------------------------------------------
 REM  --> Check for permissions
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 
@@ -38,10 +43,6 @@ if '%errorlevel%' NEQ '0' (
     
     pushd "%CD%"
     CD /D "%~dp0"
-    
-::--------------------------------------
-
-::ENTER YOUR CODE BELOW:
 
 	echo Gonna run sfc once and then 2 different scans with DISM...
 	echo.
@@ -50,14 +51,18 @@ if '%errorlevel%' NEQ '0' (
 	echo DON'T CLOSE THIS WINDOW!
 	echo.
 
-: Run sfc first and then DISM & DISM with high priority
+: Run sfc first and then DISM & DISM with high priority.
 cd /D %windir%\System32
-start /high /B /WAIT sfc.exe /scannow && start /high /B /WAIT Dism.exe /Online /Cleanup-image /Scanhealth && start /high /B /WAIT Dism.exe /Online /Cleanup-image /Restorehealth
+start /high /B /WAIT sfc.exe /scannow
+start /high /B /WAIT Dism.exe /Online /Cleanup-image /Scanhealth
+start /high /B /WAIT Dism.exe /Online /Cleanup-image /Restorehealth
 
-echo System scans complete! Logs can be found in 'C:\Windows\Logs\CBS' and 'C:\Windows\Logs\DISM' folders. Please send these to your IT technician if you're still having issues. > "%userprofile%\Desktop\Fix-Windows-NOTE.txt"
+: Print this message to a text file on the root of the boot drive.
+: Usually C:\
+echo System scans complete! Logs can be found in 'C:\Windows\Logs\CBS' and 'C:\Windows\Logs\DISM' folders. Please send these to your IT technician if you're still having issues. > "%windir%\..\Fix-Windows-NOTE.txt"
+: Show content of text file in cmd
+type "%windir%\..\Fix-Windows-NOTE.txt"
 
-type "%userprofile%\Desktop\Fix-Windows-NOTE.txt"
-
-echo Printing this as a note to %userprofile%\Desktop\Fix-Windows-NOTE.txt
+echo Printing this as a note to %windir%\..\Fix-Windows-NOTE.txt
 echo.  
 pause | echo Press Any key to close this window.

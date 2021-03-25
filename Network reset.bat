@@ -3,19 +3,25 @@
 : GNU GENERAL PUBLIC LICENSE
 : Version 3, 29 June 2007
 
+: Skip message at ScriptStart and proceed from gotAdmin if in administrator session.
+::----------------------------------------------------------------------------------
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
+REM --> If error flag set, we do not have admin.  
+if '%errorlevel%' NEQ '0' ( goto ScriptStart ) else ( goto gotAdmin )
+
+:ScriptStart
 echo If you are having trouble with connecting to the internet or other network related issues, this might help against them.
 echo.
 echo This script requires administrator rights to execute.
 echo.
 echo If you're running this in standard mode,
-echo this script will prompt you to run it as administrator,
-echo so no need to relaunch it manually as administrator.
+echo this script will prompt you for your administrator credentials and continue execution.
 echo. 
 pause | echo Close this window to cancel. Press any key to continue.
 
 
-:: BatchGotAdmin        
-:-------------------------------------        
+: Prompt for administrator rights if cacls provides error. Otherwise, proceed.
+::----------------------------------------------------------------------------
 REM  --> Check for permissions  
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
 REM --> If error flag set, we do not have admin.  

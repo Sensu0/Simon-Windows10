@@ -5,7 +5,7 @@ REM Version 3, 29 June 2007
 
 echo NOTE! This script is only relevant for users that have accounts managed on a server for login on computers {i.e domain computers}.
 echo.
-echo This will do nothing for independent computers.
+echo This will do nothing for independent/home computers.
 echo Only effective on domain computers. In other words, work computers.
 echo.
 echo.
