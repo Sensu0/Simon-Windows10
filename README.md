@@ -29,3 +29,5 @@ This is not relevant for the average home user, but rather for corporate compute
 <i>gpupdate.bat</i> might help you when you've made changes to <b>Active Directory</b> from a server on the local computer, such as resetting or changing a password or for example given a user access to a specific path on your network storage.
 
 The script works by running <i>gpupdate /force</i> in <i>cmd.exe</i> to sync AD changes between the domain controller and the client.
+
+<i>Clean-recyclebin.ps1</i> will clean the recyclebin for all the users that have a profile on the given computer.

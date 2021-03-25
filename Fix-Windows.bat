@@ -53,9 +53,18 @@ if '%errorlevel%' NEQ '0' (
 
 : Run sfc first and then DISM & DISM with high priority.
 cd /D %windir%\System32
+echo Step 1 of 4
+echo.
 start /high /B /WAIT sfc.exe /scannow
+echo Step 2 of 4
+echo.
 start /high /B /WAIT Dism.exe /Online /Cleanup-image /Scanhealth
+echo Step 3 of 4
+echo.
 start /high /B /WAIT Dism.exe /Online /Cleanup-image /Restorehealth
+echo Step 4 of 4
+echo.
+start /high /B /WAIT sfc.exe /scannow
 
 : Print this message to a text file on the root of the boot drive.
 : Usually C:\
