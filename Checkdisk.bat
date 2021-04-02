@@ -39,7 +39,7 @@ if '%errorlevel%' NEQ '0' (
 
 : Run chkdsk now or prompt user to run chkdsk at next boot of Windows.
 echo.
-chkdsk /scan /B
+chkdsk /scan /perf /B
 echo.
 echo.
 pause | echo Press any key to restart the computer. Close this window to restart later.
