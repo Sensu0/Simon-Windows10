@@ -2,7 +2,7 @@
 
 This is a repo to help people fix common issues with the Windows operating system.
 
-I learned of these on my free time and while working in Servicedesk. Tested and confirmed to be working on Windows 10, but it will probably word on older Windows operating systems as well.
+I learned of these on my free time and while working in Servicedesk. Tested and confirmed to be working on Windows 10 (version 20H2), but it will probably word on older Windows operating systems as well.
 
 ---
 
