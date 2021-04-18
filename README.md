@@ -46,8 +46,8 @@ These scrippts are purely for tweaking Windows 10 to my liking.
 Just type in the path of the <b>customization</b> folder from this git repo when prompted (<b>Ctrl+L, Ctrl+C and Ctrl+V</b> are your friend ;) and you'll be good to go.
 
 <i>
-certmgr.ps1
 
+certmgr.ps1
 
 ..\'Troubleshooting and maintenance'\Delete-bin.ps1
 
