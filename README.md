@@ -47,9 +47,14 @@ Just type in the path of the <b>customization</b> folder from this git repo when
 
 <i>
 certmgr.ps1
+
 ..\'Troubleshooting and maintenance'\Delete-bin.ps1
+
 devmgmt.ps1
+
 diskmgmt.ps1
+
 services.ps1
+
 WF.ps1
 </i>
