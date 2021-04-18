@@ -1,3 +1,7 @@
+# Copyright (C) 2021 Simon Brännström <simon.brannstrom1@gmail.com>
+# GNU GENERAL PUBLIC LICENSE
+# Version 3, 29 June 2007
+
 Write-Host "This will setup a bunch of PowerShell aliases
 "
 $path = Read-Host "Enter path of the 'Powershell' folder
@@ -7,7 +11,7 @@ Default for most people will be $env:userprofile\Downloads\Simon-Windows10\Power
 # All of these programs end with ".msc"
 
 Set-Alias -Name certs -Value $path\certmgr.ps1
-Set-Alias -Name empty-bin -Value $path\Delete-bin.ps1
+Set-Alias -Name empty-bin -Value $path\..\Delete-bin.ps1
 Set-Alias -Name devmgmt -Value $path\devmgmt.ps1
 Set-Alias -Name diskmgmt -Value $path\diskmgmt.ps1
 Set-Alias -Name services -Value $path\services.ps1
