@@ -33,7 +33,8 @@ if '%errorlevel%' NEQ '0' (
 :UACPrompt  
     echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"  
     echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"  
-    "%temp%\getadmin.vbs"  
+    "%temp%\getadmin.vbs"
+    del "%temp%\getadmin.vbs"
     exit /B
 :gotAdmin
 

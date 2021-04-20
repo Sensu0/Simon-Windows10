@@ -9,7 +9,7 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 }
 
 # Location where all files will be downloaded
-$location = "D:\Downloads"
+$location = "~\Downloads"
 
 Write-Host "Please edit the location varible to change the download path.
 Current path is set to $location"
@@ -23,42 +23,46 @@ $url2 = "https://github.com/ViGEm/DsHidMini/releases/download/v1.3.130.0/dshidmi
 # Version of DsHidMini driver used in this script
 $dshidminiver = "dshidmini_v1.3.130.0"
 
-Write-Host "Step 1 of 5
+Write-Host "Step 1 of 6
 Downloading BthPS3Setup.msi driver files..."
 Invoke-WebRequest -Uri $url1 -OutFile $location\BthPS3Setup_x64.msi
 Clear-Host
 
-Write-Host "Step 2 of 5
+Write-Host "Step 2 of 6
 Downloading $dshidminiver.zip..."
 Invoke-WebRequest -Uri $url2 -OutFile $location\$dshidminiver.zip
 
 Write-Host "
-Step 3 of 5
+Step 3 of 6
 
 Installing BthPS3 for USB functionality..."
 .$location\BthPS3Setup_x64.msi
 
 Write-Host "
-Step 4 of 5
+Step 4 of 6
 
-Extracting $dshidminiver.zip, then installing driver..."
-Expand-Archive -Path $location\$dshidminiver.zip -DestinationPath $location\$dshidminiver\ -Force ; (
-    PNPUtil.exe /add-driver $location\$dshidminiver\x64\dshidmini\dshidmini.inf
+Extracting $dshidminiver.zip, "
+Expand-Archive -Path $location\$dshidminiver.zip -DestinationPath 'C:\Program Files (x86)'\$dshidminiver -Force ; (
+# Fix to allow program to execute from 'C:\Program Files (x86)' as standard user.
+# Administrators get full access by default.
+Write-Host "
+Step 5 of 6
+
+Granting Users Write permissions to all files in 'C:\Program Files (x86)\$dshidminiver'
+" 
+# Does not apply to folders in the path, so the folder is still protected
+) ; icacls.exe 'C:\Program Files (x86)'\$dshidminiver /grant:r Users:W /t /q ; Write-Host "
+Step 6 of 6
+
+Installing driver 'dshidmini.inf'..." ; (
+PNPUtil.exe /add-driver 'C:\Program Files (x86)'\$dshidminiver\x64\dshidmini\dshidmini.inf
+# Comment out line above and uncomment line below if you're running the 32-bit version of Windwos 10.
+# PNPUtil.exe /add-driver 'C:\Program Files (x86)'\$dshidminiver\x86\dshidmini\dshidmini.inf
 )
 
 Write-Host "
-Wait until all the installations have finished before continuing with this script!"
-Pause
-
-Write-Host "
-Step 5 of 5
-
-Moving $dshidminiver folder to 'C:\Program Files (x86)'..."
-Move-Item -Path $location\$dshidminiver -Destination 'C:\Program Files (x86)' -Force
-
-Write-Host "
 If you want
-'C:\Program Files (x86)'\$dshidminiver\DSHMC.exe
+'C:\Program Files (x86)\$dshidminiver\DSHMC.exe'
 To run on login, open explorer.exe and paste a shortcut of it into 'shell:startup'
 
 Nothing else will run after this message."

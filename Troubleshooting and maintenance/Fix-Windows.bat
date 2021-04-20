@@ -68,10 +68,10 @@ start /high /B /WAIT sfc.exe /scannow
 
 : Print this message to a text file on the root of the boot drive.
 : Usually C:\
-echo System scans complete! Logs can be found in 'C:\Windows\Logs\CBS' and 'C:\Windows\Logs\DISM' folders. Please send these to your IT technician if you're still having issues. > "%windir%\..\Fix-Windows-NOTE.txt"
+echo System scans complete! Logs can be found in 'C:\Windows\Logs\CBS' and 'C:\Windows\Logs\DISM' folders. Please send these to your IT technician if you're still having issues. > "C:\Fix-Windows-NOTE.txt"
 : Show content of text file in cmd
-type "%windir%\..\Fix-Windows-NOTE.txt"
+type "C:\Fix-Windows-NOTE.txt"
 
-echo Printing this as a note to %windir%\..\Fix-Windows-NOTE.txt
+echo Printing this as a note to 'C:\Fix-Windows-NOTE.txt'
 echo.  
 pause | echo Press Any key to close this window.
