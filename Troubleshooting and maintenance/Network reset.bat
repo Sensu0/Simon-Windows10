@@ -7,7 +7,9 @@
 ::----------------------------------------------------------------------------------
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
 REM --> If error flag set, we do not have admin.  
-if '%errorlevel%' NEQ '0' ( goto ScriptStart ) else ( goto gotAdmin )
+if '%errorlevel%' NEQ '0' ( 
+	goto ScriptStart
+	) else ( goto gotAdmin )
 
 :ScriptStart
 echo If you are having trouble with connecting to the internet or other network related issues, this might help against them.
@@ -22,13 +24,11 @@ pause | echo Close this window to cancel. Press any key to continue.
 
 : Prompt for administrator rights if cacls provides error. Otherwise, proceed.
 ::----------------------------------------------------------------------------
-REM  --> Check for permissions  
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
 REM --> If error flag set, we do not have admin.  
 if '%errorlevel%' NEQ '0' ( echo Requesting administrative privileges...
-goto UACPrompt) 
-else 
-( goto gotAdmin )  
+goto UACPrompt
+) else ( goto gotAdmin )  
 :UACPrompt  
     echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"  
     echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"  

@@ -7,7 +7,9 @@
 ::----------------------------------------------------------------------------------
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"  
 REM --> If error flag set, we do not have admin.  
-if '%errorlevel%' NEQ '0' ( goto ScriptStart ) else ( goto gotAdmin )
+if '%errorlevel%' NEQ '0' (
+	goto ScriptStart
+	) else ( goto gotAdmin )
 
 :ScriptStart
 echo This script will check for issues on your boot drive.
