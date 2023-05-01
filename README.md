@@ -2,7 +2,7 @@
 
 This is a repo to help people fix common issues with the Windows operating system, but also to customize Windows 10.
 
-I learned of these on my free time and while working in Servicedesk. Tested and confirmed to be working on Windows 10 (version 20H2), but it will probably word on older Windows operating systems as well.
+I learned of these on my free time and while working in Servicedesk. Tested and confirmed to be working on Windows 10 (version 22H2), but it will probably word on older Windows operating systems as well.
 
 ---
 
@@ -35,6 +35,8 @@ The script works by running <i>gpupdate /force</i> in <i>cmd.exe</i> to sync AD 
 ### Customization
 
 These scrippts are purely for tweaking Windows 10 to my liking.
+
+<i>winget install.ps1</i> is a script that will install a lot of software which I regularly use. <a href="https://ninite.com/">Ninite</a> is also an alternative.
 
 <i>Install PS3 Controller support.ps1</i> will install drivers from <a href="https://github.com/ViGEm">ViGEm</a> for making Playstation 3 controllers compatible with with Windows 10. Your dead CMOS battery may prevent you from playig digital games, but at least you can use the controller for <a href="https://rpcs3.net/">RPCS3</a>.
 
