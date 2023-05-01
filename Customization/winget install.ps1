@@ -34,7 +34,7 @@ winget install "Microsoft Visual C++ 2013 Redistributable (x86)" --source winget
 winget install "Microsoft Visual C++ 2015-2022 Redistributable (x86)" --source winget --accept-source-agreements
 
 # Social
-winget install whatsapp --source msstore --accept-source-agreements
+winget install "telegram desktop" --source winget --accept-source-agreements
 
 # Gaming
 winget install "epic games store" --source msstore --accept-source-agreements
